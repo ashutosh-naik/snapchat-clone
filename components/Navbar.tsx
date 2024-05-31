@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Grip } from "lucide-react";
 import { auth } from "@/auth";
 import LogoutButton from "./shared/LogoutButton";
+import Link from "next/link";
 
 const Navbar = async () => {
   const authUser = await auth();
@@ -13,7 +14,14 @@ const Navbar = async () => {
   return (
     <div className="flex items-center justify-between w-screen px-10 py-4 bg-[#FFFC00]">
       <div className="flex items-center gap-4">
-        <Image src={SnapchatLogo} alt="Snapchat logo" width={36} height={36} />
+        <Link href="/">
+          <Image
+            src={SnapchatLogo}
+            alt="Snapchat logo"
+            width={40}
+            height={40}
+          />
+        </Link>
         <Input
           type="text"
           placeholder="Search"
