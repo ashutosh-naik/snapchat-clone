@@ -4,8 +4,12 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { LaptopMinimal } from "lucide-react";
 import Link from "next/link";
+import { auth } from "@/auth";
+import { MessageSquareMore } from "lucide-react";
 
-const Header = () => {
+const Header = async () => {
+  const authUser = await auth();
+
   return (
     <div className="flex items-center justify-between max-w-7xl mx-auto mt-8">
       <div>
@@ -21,11 +25,19 @@ const Header = () => {
           <br />
           and Spotlight, all from your computer.
         </p>
-        <Link href="/login">
-        <Button className="rounded-full flex items-center gap-2 px-6">
-          <LaptopMinimal className="w-4 h-4" /> Log in to chat
-        </Button>
-        </Link>
+        {authUser ? (
+          <Link href="/chat">
+            <Button className="rounded-full flex items-center gap-2 px-6">
+              <MessageSquareMore className="w-4 h-4" /> Start chat
+            </Button>
+          </Link>
+        ) : (
+          <Link href="/login">
+            <Button className="rounded-full flex items-center gap-2 px-6">
+              <LaptopMinimal className="w-4 h-4" /> Log in to chat
+            </Button>
+          </Link>
+        )}
       </div>
       <div>
         <Image

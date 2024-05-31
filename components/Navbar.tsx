@@ -4,9 +4,12 @@ import SnapchatLogo from "@/public/snapchat.jpg";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Grip } from "lucide-react";
-import { LogOut } from "lucide-react";
+import { auth } from "@/auth";
+import LogoutButton from "./shared/LogoutButton";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const authUser = await auth();
+
   return (
     <div className="flex items-center justify-between w-screen px-10 py-4 bg-[#FFFC00]">
       <div className="flex items-center gap-4">
@@ -33,9 +36,7 @@ const Navbar = () => {
         </Button>
         <Button className="rounded-full px-6">Snapchat Ads</Button>
         <Button className="rounded-full px-6">Download</Button>
-        <Button size="icon" className="rounded-full">
-          <LogOut className="w-4 h-4" />
-        </Button>
+        <LogoutButton />
       </div>
     </div>
   );
