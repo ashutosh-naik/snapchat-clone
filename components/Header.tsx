@@ -3,6 +3,7 @@ import MainImage from "@/public/main-image.png";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { LaptopMinimal } from "lucide-react";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -20,9 +21,11 @@ const Header = () => {
           <br />
           and Spotlight, all from your computer.
         </p>
+        <Link href="/login">
         <Button className="rounded-full flex items-center gap-2 px-6">
           <LaptopMinimal className="w-4 h-4" /> Log in to chat
         </Button>
+        </Link>
       </div>
       <div>
         <Image

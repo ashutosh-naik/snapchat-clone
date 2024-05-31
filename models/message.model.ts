@@ -41,4 +41,4 @@ const messageModel = new mongoose.Schema<MessageDocument>(
   { timestamps: true }
 );
 export const Message: Model<MessageDocument> =
-  mongoose.models?.Message || mongoose.model("Message", messageModel);
+  mongoose?.models?.Message || mongoose.model("Message", messageModel);
