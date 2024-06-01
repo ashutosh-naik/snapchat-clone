@@ -31,7 +31,9 @@ const Navbar = async () => {
       <div className="flex items-center gap-2">
         <Button variant="ghost">Stories</Button>
         <Button variant="ghost">Spotlight</Button>
-        <Button variant="ghost">Chat</Button>
+        <Link href="/chat">
+          <Button variant="ghost">Chat</Button>
+        </Link>
         <Button variant="ghost">Lenses</Button>
       </div>
       <div className="flex items-center gap-4">
@@ -44,7 +46,13 @@ const Navbar = async () => {
         </Button>
         <Button className="rounded-full px-6">Snapchat Ads</Button>
         <Button className="rounded-full px-6">Download</Button>
-        <LogoutButton />
+        {authUser ? (
+          <LogoutButton />
+        ) : (
+          <Link href="/login">
+            <Button className="rounded-full">Login</Button>
+          </Link>
+        )}
       </div>
     </div>
   );
